@@ -30,22 +30,22 @@ def calculate_total(cards)
   total = 0
 
   cards.each do |c|
-      if c[1] == "Jack"
-        total = total + 10
-      elsif c[1] == "Queen"
-        total = total + 10
-      elsif c[1] == "King"
-        total = total + 10
-      elsif c[1] == "Ace"
-        if prev_ace >= 1
-          total = total + additional_ace
-        else
-          total = total + ace
-          prev_ace = prev_ace + 1
-        end
+    if c[1] == "Jack"
+      total = total + 10
+    elsif c[1] == "Queen"
+      total = total + 10
+    elsif c[1] == "King"
+      total = total + 10
+    elsif c[1] == "Ace"
+      if prev_ace >= 1
+        total = total + additional_ace
       else
-        total = total + c[1].to_i
+        total = total + ace
+        prev_ace = prev_ace + 1
       end
+    else
+      total = total + c[1].to_i
+    end
   end
   total
 end
