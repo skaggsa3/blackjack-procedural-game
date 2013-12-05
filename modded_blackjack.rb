@@ -108,7 +108,6 @@ while true
   initial_cards
 
   while true
-    hit_or_stay = ""
     if $player_total > 21
       puts "You busted"
       bust = true
