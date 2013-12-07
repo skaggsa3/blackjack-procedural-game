@@ -24,9 +24,6 @@ end
 
 def calculate_total(cards)
   prev_ace = 0
-  face_card = 10
-  ace = 11
-  additional_ace = 1
   total = 0
 
   cards.each do |c|
@@ -37,16 +34,20 @@ def calculate_total(cards)
     elsif c[1] == "King"
       total = total + 10
     elsif c[1] == "Ace"
-      if prev_ace >= 1
-        total = total + additional_ace
-      else
-        total = total + ace
-        prev_ace = prev_ace + 1
-      end
+      prev_ace += 1
     else
       total = total + c[1].to_i
     end
   end
+
+  prev_ace.times do 
+    if (total + 11) > 21
+      total += 1
+    else
+      total += 11
+    end
+  end
+
   total
 end
 
